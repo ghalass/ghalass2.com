@@ -25,3 +25,5 @@ git clone https://github.com/ghalass/ghalass2.com.git
 cd ghalass2.com/
 git pull ==> suite à mise à jour code sur github
 allowedHosts: "all" // Allow all hosts ==> to add in vite.config.js
+
+docker compose run --rm certbot ==> Générer les certificats
