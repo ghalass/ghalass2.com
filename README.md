@@ -24,4 +24,4 @@ sudo apt upgrade -y
 git clone https://github.com/ghalass/ghalass2.com.git
 cd ghalass2.com/
 git pull ==> suite à mise à jour code sur github
-allowedHosts: true // Allow all hosts ==> to add in vite.config.js
+allowedHosts: "all" // Allow all hosts ==> to add in vite.config.js
