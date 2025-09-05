@@ -77,7 +77,7 @@ function App() {
           </>
         </div>
 
-        <h6>Deploy On VPS Hostinger</h6>
+        <h6>Deploy On VPS Hostinger :)</h6>
       </div>
     </>
   );
