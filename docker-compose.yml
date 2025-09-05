@@ -1,53 +1,16 @@
 # docker-compose.yml
-# services:
-#   app:
-#     build:
-#       context: .
-#       dockerfile: Dockerfile
-#     container_name: ghalass2-container-app
-#     restart: unless-stopped
-#     environment:
-#       - NODE_ENV=production
-#       - PORT=3000
-#     ports:
-#       - "5050:3000"
-#   nginx:
-#     image: nginx:alpine
-#     container_name: ghalass2-container-nginx
-#     restart: unless-stopped
-#     ports:
-#       - "80:80"
-#       - "443:443"
-#     volumes:
-#       - ./nginx.conf:/etc/nginx/conf.d/default.conf
-#       - webroot:/var/www/html
-#     depends_on:
-#       - app
-
-# volumes:
-#   webroot:
-
-# services:
-#   app:
-#     build:
-#       context: .
-#       dockerfile: Dockerfile
-#     container_name: ghalass2-container-app
-#     restart: unless-stopped
-#     ports:
-#       - "80:80"
-#       - "443:443"
-
 services:
   app:
     build:
       context: .
       dockerfile: Dockerfile
     container_name: ghalass2-container-app
-    restart: "no"
-    volumes:
-      - webroot:/app/dist
-
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    ports:
+      - "5050:3000"
   nginx:
     image: nginx:alpine
     container_name: ghalass2-container-nginx
@@ -57,9 +20,46 @@ services:
       - "443:443"
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
-      - webroot:/usr/share/nginx/html
+      - webroot:/var/www/html
     depends_on:
       - app
 
 volumes:
   webroot:
+
+# services:
+#   app:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     container_name: ghalass2-container-app
+#     restart: unless-stopped
+#     ports:
+#       - "80:80"
+#       - "443:443"
+
+# services:
+#   app:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     container_name: ghalass2-container-app
+#     restart: "no"
+#     volumes:
+#       - webroot:/app/dist
+
+#   nginx:
+#     image: nginx:alpine
+#     container_name: ghalass2-container-nginx
+#     restart: unless-stopped
+#     ports:
+#       - "80:80"
+#       - "443:443"
+#     volumes:
+#       - ./nginx.conf:/etc/nginx/conf.d/default.conf
+#       - webroot:/usr/share/nginx/html
+#     depends_on:
+#       - app
+
+# volumes:
+#   webroot:
