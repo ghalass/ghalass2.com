@@ -76,6 +76,8 @@ function App() {
             </Modal>
           </>
         </div>
+
+        <h6>Deploy On VPS Hostinger</h6>
       </div>
     </>
   );

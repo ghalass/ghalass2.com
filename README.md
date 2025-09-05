@@ -27,3 +27,11 @@ git pull ==> suite à mise à jour code sur github
 allowedHosts: "all" // Allow all hosts ==> to add in vite.config.js
 
 docker compose run --rm certbot ==> Générer les certificats
+
+Étapes après modification code :
+docker compose down ==> Supprime les anciens conteneurs pour repartir propre
+docker compose up -d --build ==> Rebuild et démarre
+docker compose exec nginx ls -l /etc/letsencrypt/live/home.ghalass.com/ ==> Vérifie le certificat
+docker compose run --rm certbot renew --dry-run ==> Teste le renouvellement automatique
+
+https://www.youtube.com/watch?v=C7aooGtKq8Y&t=2837s
