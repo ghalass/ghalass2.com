@@ -23,3 +23,6 @@ services:
       - webroot:/var/www/html
     depends_on:
       - app
+
+volumes:
+  webroot:

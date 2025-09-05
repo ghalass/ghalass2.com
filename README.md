@@ -15,3 +15,11 @@ docker compose up
 docker compose up --build ==> suite mise à jour code
 
 docker logs ghalass2-container-app ==> Vérifiez les logs pour les erreurs
+
+# hostinger
+
+vps ubuntu with docker
+sudo apt update
+sudo apt upgrade -y
+git clone https://github.com/ghalass/ghalass2.com.git
+cd ghalass2.com/
