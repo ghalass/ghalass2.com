@@ -7,11 +7,11 @@ export default defineConfig({
   server: {
     host: true, // Écoute sur toutes les interfaces
     port: 3000,
-    allowedHosts: true // Allow all hosts
+    allowedHosts: "all" // Allow all hosts
   },
   preview: {
     host: true, // Important pour Docker
     port: 3000,
-    allowedHosts: true // Allow all hosts
+    allowedHosts: 'all' // Allow all hosts
   }
 })
