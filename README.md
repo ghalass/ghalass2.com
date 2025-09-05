@@ -23,3 +23,4 @@ sudo apt update
 sudo apt upgrade -y
 git clone https://github.com/ghalass/ghalass2.com.git
 cd ghalass2.com/
+git pull ==> suite à mise à jour code sur github
