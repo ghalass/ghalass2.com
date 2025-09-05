@@ -1,4 +1,27 @@
 # docker-compose.yml
+# services:
+#   nginx:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     container_name: ghalass2-container-nginx
+#     restart: unless-stopped
+#     ports:
+#       - "80:80"
+#       - "443:443"
+#     volumes:
+#       - ./certbot/www:/var/www/certbot  # <== important
+#   certbot:
+#     image: certbot/certbot
+#     container_name: certbot
+#     volumes:
+#       - ./certbot/conf:/etc/letsencrypt
+#       - ./certbot/www:/var/www/certbot
+#     depends_on:
+#       - nginx
+#     command: certonly --webroot --webroot-path=/var/www/certbot --email support@ghalass.com --agree-tos --no-eff-email --non-interactive --keep-until-expiring -d home.ghalass.com -d www.home.ghalass.com
+
+
 services:
   nginx:
     build:
@@ -10,13 +33,25 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./certbot/www:/var/www/certbot  # <== important
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf  # <-- nécessaire pour que Certbot modifie Nginx
+
   certbot:
     image: certbot/certbot
     container_name: certbot
     volumes:
       - ./certbot/conf:/etc/letsencrypt
       - ./certbot/www:/var/www/certbot
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf  # <-- pour que certbot --nginx puisse accéder à la config
     depends_on:
       - nginx
-    command: certonly --webroot --webroot-path=/var/www/certbot --email support@ghalass.com --agree-tos --no-eff-email --non-interactive --keep-until-expiring -d home.ghalass.com -d www.home.ghalass.com
+    command: >
+      certbot
+      --nginx
+      --email support@ghalass.com
+      --agree-tos
+      --no-eff-email
+      --non-interactive
+      -d home.ghalass.com
+      -d www.home.ghalass.com
