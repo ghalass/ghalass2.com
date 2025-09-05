@@ -47,7 +47,6 @@ services:
     depends_on:
       - nginx
     command: >
-      certbot
       --nginx
       --email support@ghalass.com
       --agree-tos
