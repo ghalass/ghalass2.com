@@ -12,5 +12,6 @@ export default defineConfig({
   preview: {
     host: true, // Important pour Docker
     port: 3000,
+    allowedHosts: true // Allow all hosts
   }
 })
